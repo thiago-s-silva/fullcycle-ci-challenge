@@ -1,0 +1,26 @@
+name: ci-sonarcloud
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  run-ci:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
+      - name: Setup Node engine
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run unit tests coverage
+        run: yarn test:cov
