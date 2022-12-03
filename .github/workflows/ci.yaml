@@ -20,5 +20,5 @@ jobs:
       - run: yarn
         name: Install dependencies
 
-      - run: yarn test
-        name: Run Unit Tests
+      - run: yarn test:cov
+        name: Run unit tests coverage
